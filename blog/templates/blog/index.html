@@ -82,7 +82,7 @@
         <div class="card-body">
           {% for ab in about %}
           <article>
-            <p class="card-text">{{ ab.text | slice:':400' | safe }}...</p>
+            <p class="card-text">{{ ab.text | slice:':200' | safe }}...</p>
             <a href="{% url 'about' %}" class="btn btn-danger">Read More</a>
 
           </article>
