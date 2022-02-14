@@ -15,6 +15,8 @@ import os
 import environ
 import django_heroku
 import dj_database_url
+import cloudinary
+import cloudinary_storage
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -43,6 +45,8 @@ INSTALLED_APPS = [
     'blog',
     'crispy_forms',
     'django_summernote'
+    'cloudinary',
+    'cloudinary_storage',
 ]
 
 MIDDLEWARE = [
@@ -154,10 +158,16 @@ EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # Custom setting. To email
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
-
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME':env('CLOUD_NAME'),
+    'API_KEY': env('API_KEY'),
+    'API_SECRET':env('API_SECRET'),
+}
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 django_heroku.settings(locals())
