@@ -82,7 +82,9 @@
         <div class="card-body">
           {% for ab in about %}
           <quote>
-            <p class="card-text">{{ ab.text | slice:':200' | safe }}...</p>
+            <p class="card-text">Hi Guest!
+
+              This is a Django project personalized to my blog website....</p>
             <a href="{% url 'about' %}" class="btn btn-danger">Read More</a>
 
           </quote>
