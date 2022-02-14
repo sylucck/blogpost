@@ -1,0 +1,135 @@
+{% extends  'base.html' %}
+  <!-- Page Content -->
+
+{% block content %}
+
+  <header class="masthead">
+    <div class="overlay"></div>
+    <div class="container col-lg-18">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class=" site-heading my-4 mt-3 text-dark"> Welcome to my awesome Blog </h3>
+                </div>
+                <div class="card my-4">
+                  <div class="card-body">
+                    <form action="{% url 'search' %}" method="GET" value="{{request.GET.q}}">
+                      Search For a Post<br><input type="text" name="q" value="{{request.GET.q}}" placeholder="Search posts"/>
+                      <input type="submit" name="submit" value="Search"/>
+                      </form>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+  <div class="container">
+
+    <div class="row mx-auto">
+
+      <!-- Blog Entries Column -->
+      <div class="col-md-8">
+
+
+
+        <!-- Blog Post -->
+        {% for post in users %}
+        <div class="card mb-4">
+          <img class="card-img-top" src="{{post.imageURL }}" alt="Card image cap">
+          <div class="card-body">
+            <h2 class="card-title">{{ post.title }}</h2>
+            <p class="card-text">{{ post.content | slice:':400' | safe }}...</p>
+            <a href="{% url 'blog-detail' post.slug %}" class="btn btn-primary">Read More</a>
+          </div>
+          <div class="card-footer text-muted">
+            Posted on {{post.created_on}} by
+            <a href="{% url 'author' %}">{{ post.author }}</a>
+          </div>
+        </div>
+        {% endfor %}
+
+        
+        
+        
+      </div>
+      <br>
+      <hr>
+      <hr>
+      <hr>
+      <div class="col-md-4 float-center">
+
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  {% for cate in categories %}
+                  <li>
+                    <a href="{% url 'category' cate.slug %}">{{ cate.name }}</a>
+                  </li>
+                  {% endfor %}
+                  
+                </ul>
+              
+            </div>
+          </div>
+        </div>
+         <hr>
+        <div class="card my-4">
+        <h5 class="card-header">About</h5>
+        <div class="card-body">
+          {% for ab in about %}
+          <article>
+            <p class="card-text">{{ ab.text | slice:':400' | safe }}...</p>
+            <a href="{% url 'about' %}" class="btn btn-danger">Read More</a>
+
+          </article>
+          {% endfor %}
+        </div>
+      </div>
+      <div class="card my-4">
+        <h4 class="card-header">Dream</h4>
+        <div class="card-body">
+          <h5>My biggest dream is definitely acheiving my goals in life. I'm working towards that path and being a software engineer is one step ahead to that path.</h5>
+        </div>
+      </div>
+      
+  
+      </div>
+      
+    </div>
+
+  </div>
+
+
+   <footer class="container py-5 bg-light col-lg-8">
+    <div class="col-lg-4 mt-10 mx-auto float-left">
+      {% if users.has_other_pages %}
+      <ul class="pagination">
+        {% if users.has_previous %}
+          <li><h4><a href="?page={{ users.previous_page_number }}">Previous page&laquo;</a></h4></li>
+        {% else %}
+          <li class="disabled"><h4><span>&laquo;</span></h4></li>
+        {% endif %}
+        {% for i in users.paginator.page_range %}
+          {% if users.number == i %}
+            <li class="active"><h4><span>{{ i }} <span class="sr-only">(current)</span></span></h4></li>
+          {% else %}
+            <li><h4><a href="?page={{ i }}">{{ i }}</a></h4></li>
+          {% endif %}
+        {% endfor %}
+        {% if users.has_next %}
+          <li><h4><a href="?page={{ users.next_page_number }}">&raquo;Next page</a></h4></li>
+        {% else %}
+          <li class="disabled"><h4><span>&raquo;</span></h4></li>
+        {% endif %}
+      </ul>
+    {% endif %}		
+    </div>
+   </footer>
+   <br>  
+  {% endblock %}
+
+    

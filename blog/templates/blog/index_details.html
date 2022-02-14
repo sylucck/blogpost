@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load tz %}
+  <!-- Page Content -->
+{%  block content %}
+  <div class="container">
+
+    <div class="row mx-auto">
+
+      <!-- Post Content Column -->
+      <div class="col-lg-10">
+
+        <!-- Title -->
+        <h1 class="mt-4">{{post.title}}</h1>
+
+        <!-- Author -->
+        <p class="lead">
+          by
+          <h6><a href="{% url 'author' %}">{{post.author}}</a></h6>
+        </p>
+
+        <hr>
+
+        <!-- Date/Time -->
+    
+        <time>Posted on {{ post.created_on }}</time> <br>
+        <time>Last Updated {{ post.updated_on }}</time> |&nbsp;Category:&nbsp; <a href="{% url 'category' post.category.slug %}"> 
+           {{ post.category.name }}</a>&nbsp;
+        
+        <hr>
+        
+
+        <!-- Preview Image -->
+        <img class="card-img-top" src="{{ post.imageURL }}" alt="Card image cap">
+
+        <hr>
+
+        <!-- Post Content -->
+        <div class="card my-4">
+        <div class="card-body">
+        <article>{{post.content | safe }}</article>
+        </div>
+        </div>
+
+        
+          
+        <hr>
+
+        <!-- Comments Form -->
+        <div class="card my-4">
+          <h5 class="card-header">Leave a Comment:</h5>
+          <div class="card-body">
+            <form action="" method="POST">
+                {% csrf_token %}
+              <!-- <div class="form-group">
+                <textarea class="form-control" rows="3"></textarea>
+              </div> -->
+              {{ form.commenter }}<br>
+              {{ form.body }}<br>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+          </div>
+        </div>
+        
+
+        <!-- Single Comment -->
+        {% for comment in comments %}
+        <div class="media mb-4">
+          <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+          <div class="media-body">
+            <h5 class="mt-0">{{comment.commenter}}</h5>
+            {{comment.body}}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      </div>
+      
+    
+    </div>
+    </div>
+
+    <br>
+
+
+     {% endblock %}

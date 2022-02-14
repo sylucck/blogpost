@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<header class="masthead">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-8 col-md-10 mx-auto">
+                <div class="site-heading">
+                    <h3 class=" site-heading my-4 mt-3 text-dark"> Welcome to Contact Page </h3>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<br>
+<hr>
+
+
+<div class="mx-auto my-4 text-center">
+    <h1>Contact Me</h1>
+</div>
+
+    <div class="col-twelve col-8">
+        <fieldset>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form | crispy }}
+    <button class="btn btn-success my-3" type="submit">Send message</button>
+    </form>
+    </fieldset>
+    </div>
+</div>
+
+
+
+<br>
+<hr>
+{% endblock %}

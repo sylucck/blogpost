@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+<br>
+
+        
+        <div class="'contain">
+            <div class='content-section'>
+                <div class='media'>
+                
+
+                {% for auth in author %}
+                  <img class="rounded-circle account-img" src="{{ auth.image.url }}" >
+                  <div class="media-body">
+                    
+                    <h2 class="account-heading">{{ user.username }} </h2>
+                    <hr>
+                    <div class="card my-4">
+                      <div class="card-body">
+                    <h5 class="text-secondary">{{ auth.title | safe }}</h5>
+
+                    <br>
+                    <a href="{% url 'contact' %}">Contact Me Now!</a>
+                    </div>
+                    </div>
+                    
+                   
+                  </div>
+                  
+                </div>
+                {% endfor %}
+
+        </div>
+   
+  
+
+<br>
+<hr>
+
+{% endblock %}

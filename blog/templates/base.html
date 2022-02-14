@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>Blog Home -</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+  
+
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+  <!-- Custom styles for this template -->
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="{% url 'blog' %}">Blog</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href='#'>Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'contact' %}">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    {% if messages %}
+       {% for message in messages %}
+       <div class="alert alert-{{ message.tags }}">
+         {{ message }}
+       </div>
+       {% endfor %}
+    {% endif %}
+   
+         {% block content  %}
+
+         {% endblock  %}
+      </div>
+
+  <div class="col-md-4 float-center">
+
+    <!-- Search Widget -->
+   
+
+    <!-- Categories Widget -->
+   
+
+    <!-- Side Widget -->
+    
+
+  </div>
+
+</div>
+<!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+
+
+<footer class="footer">
+  
+  <div class="container bottom_border">
+  <div class="row"> 
+  <div class=" col-sm-4 col-md col-sm-4  col-12 col">
+ 
+  <h5 class="headin5_amrc col_white_amrc pt2">Text Me</h5>
+  <!--headin5_amrc-->
+ 
+  <p><i class="fa fa-phone"></i>  +234- 8108836102 </p>
+  <p><i class="fa fa fa-envelope"></i> nkwontasylvester15@gmail.com </p>
+  <p><i class="fa fa-location-arrow"></i> Awka, Anambra. Nigeria </p>
+ 
+ 
+  
+  </div>
+  
+  
+  <div class=" col-sm-4 col-md  col-6 col">
+  <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
+  <!--headin5_amrc-->
+  
+  
+  <ul class="footer_ul_amrc">
+  <li><a href="#">Bonus</a></li>
+  <li><a href="#">Bonus</a></li>
+  <li><a href="">Bonus</a></li>
+  
+  </ul>
+  
+  <!--footer_ul_amrc ends here-->
+  </div>
+  
+  
+  
+  
+  
+  <div class=" col-sm-4 col-md  col-12 col">
+  <!--headin5_amrc ends here-->
+  <h5 class="headin5_amrc col_white_amrc pt2">Social Media Accounts</h5>
+    <ul class="social_footer_ul_amrc">
+      
+    <li><a href="https://web.facebook.com/kiddomantii.elias"><i class="fab fa-facebook-f"></i></a></li>
+    <li><a href="https://github.com/sylucck"><i class="fab fa-twitter"></i></a></li>
+    <li><a href="https://www.linkedin.com/in/sylvester-nkwonta-718ba21b1/"><i class="fab fa-linkedin"></i></a></li>
+    <li><a href="https://www.instagram.com/sylucck/"><i class="fab fa-instagram"></i></a></li>
+    <li><a href="https://github.com/sylucck"><i class="fab fa-github"></i></a></li>
+    </ul>
+  <!--footer_ul2_amrc ends here-->
+  </div>
+  
+  </div>
+  
+  </div>
+  
+  
+  <div class="container">
+  <ul class="foote_bottom_ul_amrc">
+  <li><a href="{% url 'blog' %}">Home</a></li>
+  <li><a href="{% url 'about' %}">About</a></li>
+  <li><a href="{% url 'contact' %}">Contact</a></li>
+  </ul>
+  <!--foote_bottom_ul_amrc ends here-->
+  <p class="text-center">Copyright @2022 All Right Reserved | Sylvester E. Nkwonta</a></p>
+  
+  <!--social_footer_ul ends here-->
+  
+  </div>
+  
+  
+  </footer>
+ 
+ 
+  
+  
+  
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+</div>
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+</body>
+
+</html>
