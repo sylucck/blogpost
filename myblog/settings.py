@@ -92,14 +92,8 @@ WSGI_APPLICATION = 'myblog.wsgi.application'
 
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+    'default':  dj_database_url.config()
 }
-db_from_env = dj_database_url.config(conn_max_age=600)
-DATABASES['default'].update(db_from_env)
-
 
 
 
@@ -174,7 +168,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
-DJANGO_SECET_KEY= env('DJANGO_SECET_KEY')
+
 # Custom setting. To email
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
 CLOUDINARY_STORAGE = {
@@ -192,4 +186,4 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 
 
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
