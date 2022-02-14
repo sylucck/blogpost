@@ -81,11 +81,11 @@
         <h5 class="card-header">About</h5>
         <div class="card-body">
           {% for ab in about %}
-          <article>
-            <p class="card-text">{{ ab.text | slice:':200' | safe }}...</p>
+          <quote>
+            <p class="card-text">{{ ab.text | slice:':300' | safe }}...</p>
             <a href="{% url 'about' %}" class="btn btn-danger">Read More</a>
 
-          </article>
+          </quote>
           {% endfor %}
         </div>
       </div>
