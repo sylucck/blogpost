@@ -1,6 +1,6 @@
 
 #putting up my .env file for gitignore
-\.env
+.env
 
 
 
