@@ -1,6 +1,7 @@
 
 #putting up my .env file for gitignore
-myblog/.env
+\.env
+
 
 
 #database
