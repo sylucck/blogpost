@@ -27,11 +27,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 
 # SECURITY WARNING: don't run with debug turned on in production!
+env = environ.Env()
+environ.Env.read_env()
+
 
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
+SECRET_KEY=env('SECRET_KEY')
 
 # Application definition
 
@@ -160,8 +164,6 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
 
-env = environ.Env()
-environ.Env.read_env()
 
 
 # Bottom of the file
@@ -171,7 +173,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = env('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-SECRET_KEY = env('SECRET_KEY')
 
 # Custom setting. To email
 RECIPIENT_ADDRESS = env('RECIPIENT_ADDRESS')
